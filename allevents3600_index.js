@@ -151,6 +151,7 @@ app.post('/webhook', (req, res) => {
                         }
                         else {
                           sendTextMessage(sender, "okay great")
+                          sendTextMessage(sender, results)
                           var aplace = [];
                           var aplacea="";
                           var i = 0;
