@@ -74,7 +74,7 @@ def lambda_handler(event, context):
         }
         result = send_request(incoming)
     ############################################################################
-    print "searching for " + search_tag + " at ", search_location
+    #print "searching for " + search_tag + " at ", search_location
     print result
 
 lambda_handler(sys.argv[1], 0)

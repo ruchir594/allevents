@@ -24,7 +24,7 @@ def send_request(incoming):
             if i>4:
                 break
         if i == 0:
-            a = 'Sorry, no event of this type has been found in your area. ^ ^ ^ ^ ^'
+            a = 'jankiap50^Sorry, no event of this type has been found in your area. ^ ^ ^ ^'
         return a
 
     except requests.exceptions.RequestException:

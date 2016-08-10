@@ -141,7 +141,7 @@ app.post('/webhook', (req, res) => {
                         console.log('back in app.js')
                         console.log(results)
                         var results = String(results)
-                        var places = results.split("@");
+                        var places = results.split("^");
                         //console.log(places)
                         if (places[0] == 'jankiap50') {
                             sendTextMessage(sender, places[1]);
