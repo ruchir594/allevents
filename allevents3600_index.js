@@ -374,11 +374,17 @@ function sendGenericMessage (sender, places) {
   } // length == 4
   if (places.length == 5)
     { //length == 5
+      sendTextMessage(sender, "I am in five places.legth match");
     var textual0 = places[0].split('^')
     var textual1 = places[1].split('^')
     var textual2 = places[2].split('^')
     var textual3 = places[3].split('^')
     var textual4 = places[4].split('^')
+    sendTextMessage(sender, String(textual0.length));
+    sendTextMessage(sender, String(textual1.length));
+    sendTextMessage(sender, String(textual2.length));
+    sendTextMessage(sender, String(textual3.length));
+    sendTextMessage(sender, String(textual4.length));
       sendMessage(sender, {
           attachment: {
             type: "template",
