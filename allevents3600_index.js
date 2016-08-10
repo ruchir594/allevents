@@ -150,7 +150,7 @@ app.post('/webhook', (req, res) => {
                             //sendTextMessage(sender, places[3])
                         }
                         else {
-                          sendTextMessage(sender, "okay great? no right?")
+                          sendTextMessage(sender, "Python shell ran successfully")
                           //sendTextMessage(sender, places[0])
                           //sendTextMessage(sender, places[1])
                           //sendTextMessage(sender, places[2])
@@ -175,7 +175,7 @@ app.post('/webhook', (req, res) => {
                           //if (places[25] != ""){
                           //sendTextMessage(sender, places[25]);
                           //}
-                          sendTextMessage(sender, String(aplace.length));
+                          //sendTextMessage(sender, String(aplace.length));
                           sendGenericMessage(sender, aplace);
                           //sendTextMessage(sender, "Like the page? Share?.")
                         }
@@ -220,7 +220,7 @@ function sendGenericMessage (sender, places) {
   } // length == 1
   if (places.length == 2)
     { //length == 2
-      sendTextMessage(sender, "I am in two places.legth match");
+      //sendTextMessage(sender, "I am in two places.legth match");
     var textual0 = places[0].split('^')
     var textual1 = places[1].split('^')
       sendMessage(sender, {
