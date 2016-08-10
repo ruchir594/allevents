@@ -258,16 +258,6 @@ function sendGenericMessage (sender, places) {
                   url: textual0[4],
                   title: "See details"
                 }],
-              }, {
-                title: textual1[0],
-                subtitle: textual1[1] + textual1[2],
-                item_url: textual1[4],
-                image_url: textual1[3],
-                buttons: [{
-                  type: "web_url",
-                  url: textual1[4],
-                  title: "See details"
-                }],
               }]
             }
           }
