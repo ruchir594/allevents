@@ -216,6 +216,7 @@ function sendTextMessage (sender, text) {
 function sendGenericMessage (sender, places) {
   if (places.length == 1)
     { //length == 1
+      sendTextMessage(sender, "I am in one places.legth match");
     var textual0 = places[0].split('^')
       sendMessage(sender, {
           attachment: {
@@ -239,6 +240,7 @@ function sendGenericMessage (sender, places) {
   } // length == 1
   if (places.length == 2)
     { //length == 2
+      sendTextMessage(sender, "I am in two places.legth match");
     var textual0 = places[0].split('^')
     var textual1 = places[1].split('^')
       sendMessage(sender, {
@@ -273,6 +275,7 @@ function sendGenericMessage (sender, places) {
   } // length == 2
   if (places.length == 3)
     { //length == 3
+      sendTextMessage(sender, "I am in three places.legth match");
     var textual0 = places[0].split('^')
     var textual1 = places[1].split('^')
     var textual2 = places[2].split('^')
@@ -318,6 +321,7 @@ function sendGenericMessage (sender, places) {
   } // length == 3
   if (places.length == 4)
     { //length == 4
+      sendTextMessage(sender, "I am in four places.legth match");
     var textual0 = places[0].split('^')
     var textual1 = places[1].split('^')
     var textual2 = places[2].split('^')
