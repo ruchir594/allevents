@@ -150,6 +150,7 @@ app.post('/webhook', (req, res) => {
                             //sendTextMessage(sender, places[3])
                         }
                         else {
+                          sendTextMessage(sender, "okay great")
                           var aplace = [];
                           var aplacea="";
                           var i = 0;
@@ -165,9 +166,9 @@ app.post('/webhook', (req, res) => {
                               i=i+increment;
                               }
                           }
-                          if (places[25] != ""){
-                          sendTextMessage(sender, places[25]);
-                          }
+                          //if (places[25] != ""){
+                          //sendTextMessage(sender, places[25]);
+                          //}
                           sendGenericMessage(sender, aplace);
                           //sendTextMessage(sender, "Like the page? Share?.")
                         }

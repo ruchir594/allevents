@@ -32,9 +32,14 @@ def lambda_handler(event, userid, context):
             a = a + c_cmall + ' '
     #print a
     potentiav = GeoText(a)
+    b= []
     b = potentiav.cities
     #print b
-    location = city_to_state_country("\""+b[0]+"\"")
+    if b != []:
+        location = city_to_state_country("\""+b[0]+"\"")
+    else:
+        print 'jankiap50^Sorry, please enter a valid city. ^ ^ ^ ^'
+        return
     #print location
     ############################################################################
     all_tags = []
@@ -61,6 +66,9 @@ def lambda_handler(event, userid, context):
                 break
             i=i+1
     #print search_tag
+    if search_tag == '':
+        print 'jankiap50^Please enter a valid event... ^ ^ ^ ^'
+        return
     ############################################################################
     if len(location) > 1:
         print "there are multiple citied with that name, please select from the following"
@@ -76,5 +84,6 @@ def lambda_handler(event, userid, context):
     ############################################################################
     #print "searching for " + search_tag + " at ", search_location
     print result
+    return
 
-lambda_handler(sys.argv[1], sys.argv[2], 0)
+lambda_handler(str(sys.argv[1]), sys.argv[2], 0)
