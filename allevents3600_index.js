@@ -175,6 +175,7 @@ app.post('/webhook', (req, res) => {
                           //if (places[25] != ""){
                           //sendTextMessage(sender, places[25]);
                           //}
+                          sendTextMessage(sender, String(aplace.length));
                           sendGenericMessage(sender, aplace);
                           //sendTextMessage(sender, "Like the page? Share?.")
                         }
