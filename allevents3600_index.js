@@ -329,7 +329,7 @@ function sendGenericMessage (sender, places) {
               template_type: "generic",
               elements: [{
                 title: textual0[0],
-                subtitle: textual0[1] + textual0[2],
+                subtitle: textual0[1],
                 item_url: textual0[4],
                 image_url: textual0[3],
                 buttons: [{
@@ -339,7 +339,7 @@ function sendGenericMessage (sender, places) {
                 }],
               }, {
                 title: textual1[0],
-                subtitle: textual1[1] + textual1[2],
+                subtitle: textual1[1],
                 item_url: textual1[4],
                 image_url: textual1[3],
                 buttons: [{
@@ -349,7 +349,7 @@ function sendGenericMessage (sender, places) {
                 }],
               },{
                 title: textual2[0],
-                subtitle: textual2[1] + textual2[2],
+                subtitle: textual2[1],
                 item_url: textual2[4],
                 image_url: textual2[3],
                 buttons: [{
@@ -359,7 +359,7 @@ function sendGenericMessage (sender, places) {
                 }],
               },{
                 title: textual3[0],
-                subtitle: textual3[1] + textual3[2],
+                subtitle: textual3[1],
                 item_url: textual3[4],
                 image_url: textual3[3],
                 buttons: [{
@@ -392,7 +392,7 @@ function sendGenericMessage (sender, places) {
               template_type: "generic",
               elements: [{
                 title: textual0[0],
-                subtitle: textual0[1] + textual0[2],
+                subtitle: textual0[1], //+ textual0[2],
                 item_url: textual0[4],
                 image_url: textual0[3],
                 buttons: [{
@@ -402,7 +402,7 @@ function sendGenericMessage (sender, places) {
                 }],
               }, {
                 title: textual1[0],
-                subtitle: textual1[1] + textual1[2],
+                subtitle: textual1[1], //+ textual1[2],
                 item_url: textual1[4],
                 image_url: textual1[3],
                 buttons: [{
@@ -412,7 +412,7 @@ function sendGenericMessage (sender, places) {
                 }],
               },{
                 title: textual2[0],
-                subtitle: textual2[1] + textual2[2],
+                subtitle: textual2[1],// + textual2[2],
                 item_url: textual2[4],
                 image_url: textual2[3],
                 buttons: [{
@@ -422,7 +422,7 @@ function sendGenericMessage (sender, places) {
                 }],
               },{
                 title: textual3[0],
-                subtitle: textual3[1] + textual3[2],
+                subtitle: textual3[1],// + textual3[2],
                 item_url: textual3[4],
                 image_url: textual3[3],
                 buttons: [{
@@ -432,7 +432,7 @@ function sendGenericMessage (sender, places) {
                 }],
               },{
                 title: textual4[0],
-                subtitle: textual4[1] + textual4[2],
+                subtitle: textual4[1],// + textual4[2],
                 item_url: textual4[4],
                 image_url: textual4[3],
                 buttons: [{
