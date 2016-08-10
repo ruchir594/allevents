@@ -13,8 +13,8 @@ var PythonShell = require('python-shell');
 
 // Variables
 //let pageToken = "";
-let pageToken = "";
-const verifyToken = "";
+let pageToken = "EAAJffei4MlEBAAsOcdoRvIXuvZADZAIpCDqEozNZB5OcyKZBZCCn4yWU7lCLut0hGyZCHpNBjVohXbE8TwunqnwZA1nWivurifm9iMVyM74pNJvwg0WC9UriuJABn0crPMvyRm6sFzI8BfWeQ8nXWDiyJgPs4qw2fP84N7JEuE9FwZDZD";
+const verifyToken = "newtonIsTheGreatestManEverLived";
 const privkey = "/etc/letsencrypt/live/yelper.tonatasha.com/privkey.pem";
 const cert = "/etc/letsencrypt/live/yelper.tonatasha.com/cert.pem";
 const chain = "/etc/letsencrypt/live/yelper.tonatasha.com/chain.pem";

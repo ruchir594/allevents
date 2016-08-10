@@ -8,7 +8,7 @@ from scrap import send_request
 def getWords(data):
     return re.compile(r"[\w']+").findall(data)
 
-def lambda_handler(event, context):
+def lambda_handler(event, userid, context):
     c = getWords(event)
     d1 = ['i', 'live', 'in', 'please', 'hi', 'give', 'find', 'who', 'what', 'my', 'hungry', 'near', 'me', 'thank', 'you', \
             'want', 'to', 'eat', 'like','liked', 'I', 'can', 'you', 'suggest', 'of', 'is', 'are', 'near', 'there', 'some', \
@@ -77,4 +77,4 @@ def lambda_handler(event, context):
     #print "searching for " + search_tag + " at ", search_location
     print result
 
-lambda_handler(sys.argv[1], 0)
+lambda_handler(sys.argv[1], sys.argv[2], 0)
