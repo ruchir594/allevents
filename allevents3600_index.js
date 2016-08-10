@@ -151,12 +151,12 @@ app.post('/webhook', (req, res) => {
                         }
                         else {
                           sendTextMessage(sender, "okay great? no right?")
-                          sendTextMessage(sender, places[0])
-                          sendTextMessage(sender, places[1])
-                          sendTextMessage(sender, places[2])
-                          sendTextMessage(sender, places[3])
-                          sendTextMessage(sender, places[4])
-                          sendTextMessage(sender, String(places.length))
+                          //sendTextMessage(sender, places[0])
+                          //sendTextMessage(sender, places[1])
+                          //sendTextMessage(sender, places[2])
+                          //sendTextMessage(sender, places[3])
+                          //sendTextMessage(sender, places[4])
+                          //sendTextMessage(sender, String(places.length))
                           var aplace = [];
                           var aplacea="";
                           var i = 0;
@@ -175,7 +175,7 @@ app.post('/webhook', (req, res) => {
                           //if (places[25] != ""){
                           //sendTextMessage(sender, places[25]);
                           //}
-                          //sendGenericMessage(sender, aplace);
+                          sendGenericMessage(sender, aplace);
                           //sendTextMessage(sender, "Like the page? Share?.")
                         }
                       });
@@ -213,80 +213,231 @@ function sendTextMessage (sender, text) {
 }
 
 function sendGenericMessage (sender, places) {
-  var textual0 = places[0].split('^')
-  var textual1 = places[1].split('^')
-  var textual2 = places[2].split('^')
-  var textual3 = places[3].split('^')
-  var textual4 = places[4].split('^')
-    sendMessage(sender, {
-        attachment: {
-          type: "template",
-          payload: {
-            template_type: "generic",
-            elements: [{
-              title: textual0[0],
-              subtitle: textual0[3] + textual0[4],
-              item_url: textual0[1],
-              image_url: textual0[2],
-              buttons: [{
-                type: "web_url",
-                url: textual0[1],
-                title: "Open in Yelp"
-              }],
-            }, {
-              title: textual1[0],
-              subtitle: textual1[3] + textual1[4],
-              item_url: textual1[1],
-              image_url: textual1[2],
-              buttons: [{
-                type: "web_url",
-                url: textual2[1],
-                title: "Open in Yelp"
-              }],
-            },{
-              title: textual2[0],
-              subtitle: textual2[3] + textual2[4],
-              item_url: textual2[1],
-              image_url: textual2[2],
-              buttons: [{
-                type: "web_url",
-                url: textual2[1],
-                title: "Open in Yelp"
-              }],
-            },{
-              title: textual3[0],
-              subtitle: textual3[3] + textual3[4],
-              item_url: textual3[1],
-              image_url: textual3[2],
-              buttons: [{
-                type: "web_url",
-                url: textual3[1],
-                title: "Open in Yelp"
-              }],
-            },{
-              title: textual4[0],
-              subtitle: textual4[3] + textual4[4],
-              item_url: textual4[1],
-              image_url: textual4[2],
-              buttons: [{
-                type: "web_url",
-                url: textual4[1],
-                title: "Open in Yelp"
-              }],
-            },{
-              title: "Powered by yelp",
-              subtitle: "Powered by http://tonatasha.com",
-              item_url: "https://www.facebook.com/Yelp-Bot-1750022258569181/",
-              image_url: "http://tonatasha.com/img/yelp/bigbutton.png",
-              buttons: [{
-                type: "web_url",
-                url: "https://www.facebook.com/Yelp-Bot-1750022258569181/",
-                title: "Like the page"
-              }],
-            }]
+  if (places.length == 1)
+    { //length == 1
+    var textual0 = places[0].split('^')
+      sendMessage(sender, {
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              elements: [{
+                title: textual0[0],
+                subtitle: textual0[1] + textual0[2],
+                item_url: textual0[4],
+                image_url: textual0[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual0[4],
+                  title: "See details"
+                }],
+              }]
+            }
           }
-        }
-    });
+      });
+  } // length == 1
+  if (places.length == 2)
+    { //length == 2
+    var textual0 = places[0].split('^')
+    var textual1 = places[1].split('^')
+      sendMessage(sender, {
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              elements: [{
+                title: textual0[0],
+                subtitle: textual0[1] + textual0[2],
+                item_url: textual0[4],
+                image_url: textual0[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual0[4],
+                  title: "See details"
+                }],
+              }, {
+                title: textual1[0],
+                subtitle: textual1[1] + textual1[2],
+                item_url: textual1[4],
+                image_url: textual1[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual1[4],
+                  title: "See details"
+                }],
+              }]
+            }
+          }
+      });
+  } // length == 2
+  if (places.length == 3)
+    { //length == 3
+    var textual0 = places[0].split('^')
+    var textual1 = places[1].split('^')
+    var textual2 = places[2].split('^')
+      sendMessage(sender, {
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              elements: [{
+                title: textual0[0],
+                subtitle: textual0[1] + textual0[2],
+                item_url: textual0[4],
+                image_url: textual0[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual0[4],
+                  title: "See details"
+                }],
+              }, {
+                title: textual1[0],
+                subtitle: textual1[1] + textual1[2],
+                item_url: textual1[4],
+                image_url: textual1[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual1[4],
+                  title: "See details"
+                }],
+              },{
+                title: textual2[0],
+                subtitle: textual2[1] + textual2[2],
+                item_url: textual2[4],
+                image_url: textual2[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual2[4],
+                  title: "See details"
+                }],
+              }]
+            }
+          }
+      });
+  } // length == 3
+  if (places.length == 4)
+    { //length == 4
+    var textual0 = places[0].split('^')
+    var textual1 = places[1].split('^')
+    var textual2 = places[2].split('^')
+    var textual3 = places[3].split('^')
+      sendMessage(sender, {
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              elements: [{
+                title: textual0[0],
+                subtitle: textual0[1] + textual0[2],
+                item_url: textual0[4],
+                image_url: textual0[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual0[4],
+                  title: "See details"
+                }],
+              }, {
+                title: textual1[0],
+                subtitle: textual1[1] + textual1[2],
+                item_url: textual1[4],
+                image_url: textual1[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual1[4],
+                  title: "See details"
+                }],
+              },{
+                title: textual2[0],
+                subtitle: textual2[1] + textual2[2],
+                item_url: textual2[4],
+                image_url: textual2[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual2[4],
+                  title: "See details"
+                }],
+              },{
+                title: textual3[0],
+                subtitle: textual3[1] + textual3[2],
+                item_url: textual3[4],
+                image_url: textual3[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual3[4],
+                  title: "See details"
+                }],
+              }]
+            }
+          }
+      });
+  } // length == 4
+  if (places.length == 5)
+    { //length == 5
+    var textual0 = places[0].split('^')
+    var textual1 = places[1].split('^')
+    var textual2 = places[2].split('^')
+    var textual3 = places[3].split('^')
+    var textual4 = places[4].split('^')
+      sendMessage(sender, {
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              elements: [{
+                title: textual0[0],
+                subtitle: textual0[1] + textual0[2],
+                item_url: textual0[4],
+                image_url: textual0[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual0[4],
+                  title: "See details"
+                }],
+              }, {
+                title: textual1[0],
+                subtitle: textual1[1] + textual1[2],
+                item_url: textual1[4],
+                image_url: textual1[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual1[4],
+                  title: "See details"
+                }],
+              },{
+                title: textual2[0],
+                subtitle: textual2[1] + textual2[2],
+                item_url: textual2[4],
+                image_url: textual2[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual2[4],
+                  title: "See details"
+                }],
+              },{
+                title: textual3[0],
+                subtitle: textual3[1] + textual3[2],
+                item_url: textual3[4],
+                image_url: textual3[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual3[4],
+                  title: "See details"
+                }],
+              },{
+                title: textual4[0],
+                subtitle: textual4[1] + textual4[2],
+                item_url: textual4[4],
+                image_url: textual4[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual4[4],
+                  title: "See details"
+                }],
+              }]
+            }
+          }
+      });
+  } // length == 5
 }
 
 app.post('/token', (req, res) => {
