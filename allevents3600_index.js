@@ -59,6 +59,7 @@ app.post('/webhook', (req, res) => {
                     d1.push('this','but','his','they','her','she','or','an','will','my','one','all','would','there','their', 'talk');
                     d1.push('talking', 'love', 'loved', 'hello', 'help', 'helping', 'helped', 'pleasure', 'bye', 'goodbye', 'care', 'later');
                     d1.push('no','nothing', 'thanks', 'welcome', 'something', 'smart', 'dumb', 'poor', 'am', 'hey', 'bae', 'bea', 'no', 'okay', 'bye', 'ok', 'cool');
+                    d1.push('natasha');
 
                     var text2 = text.replace(/\?/g,'');
                     text2 = text2.replace(/!/g,'');

@@ -27,4 +27,4 @@ def city_to_state_country(city):
             i=i+1
     return a
 
-#city_to_state_country("\""+sys.argv[1]+"\"")
+print city_to_state_country("\""+sys.argv[1]+"\"")

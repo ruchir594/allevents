@@ -1,6 +1,7 @@
 import json
 import re
 import sys
+import random
 from geotext import GeoText
 from city_geo import city_to_state_country
 from scrap import send_request
@@ -46,8 +47,22 @@ def updatejson(person):
             break
     with open('data.json', 'w') as f:
          json.dump(data, f)
+def updatejson_search(person):
+    with open('data.json', 'r') as f:
+         data = json.load(f)
+    for i in data['people']:
+        if i['userid'] == person['userid']:
+            i['search_tag'] = person['search_tag']
+            i['count'] = i['count'] + 1
+            break
+    with open('data.json', 'w') as f:
+         json.dump(data, f)
 
 def lambda_handler(event, userid, context):
+    flag_city = False
+    flag_search = False
+    flag_city_this = False
+    flag_search_this = False
     person = oldner(event, userid)
     c = getWords(event)
     d1 = ['i', 'live', 'in', 'please', 'hi', 'give', 'find', 'who', 'what', 'my', 'hungry', 'near', 'me', 'thank', 'you', \
@@ -76,8 +91,9 @@ def lambda_handler(event, userid, context):
     b = potentiav.cities
     #print b
     if b == [] and person["city"] == "":
-        print 'jankiap50^Sorry, please enter a valid city. ^ ^ ^ ^'
-        return
+        #print 'jankiap50^Sorry, please enter a valid city. ^ ^ ^ ^'
+        #return
+        flag_city = False
     else:
         flag = False
         if b == []:
@@ -90,6 +106,8 @@ def lambda_handler(event, userid, context):
             person['state'] = location[0][1]
             person['country'] = location[0][2]
             updatejson(person)
+            flag_city_this = True
+        flag_city = True
     #print locatio
     ############################################################################
     all_tags = []
@@ -106,6 +124,10 @@ def lambda_handler(event, userid, context):
     for i in c:
         if i.lower() in all_tags:
             search_tag = i
+            person['search_tag'] = search_tag
+            updatejson_search(person)
+            flag_search = True
+            flag_search_this = True
             break
     i=0
     if search_tag == '':
@@ -113,15 +135,30 @@ def lambda_handler(event, userid, context):
             d = c[i] + ' ' + c[i+1]
             if d in all_tags:
                 search_tag = d
+                person['search_tag'] = search_tag
+                updatejson_search(person)
+                flag_search = True
+                flag_search_this = True
                 break
             i=i+1
-    #print search_tag
-    if search_tag == '':
-        print 'jankiap50^Please enter a valid event type... ^ ^ ^ ^'
-        return
+    #print "ST   ",search_tag, flag_search
+    if search_tag == '' and person['search_tag'] != '':
+        search_tag = person['search_tag']
+        flag_search = True
+
     ############################################################################
-    if len(location) > 1:
+    if flag_search_this == False and flag_city_this == False:
+        foo = ["Okay", 'cool', 'sure', 'indeed', 'idk']
+        print "jankiap50^"+random.choice(foo)+" ^ ^ ^ ^ "
+        return
+    elif flag_search == True and flag_city == False:
+        print "jankiap50^ Hmmm... okay. I think you are looking for " + str(search_tag) + ", please enter a valif city."
+        return
+    elif len(location) > 1:
         print "jankiap50^there are multiple cities with that name, please select from the following ^ ^ ^ ^ "
+        return
+    elif flag_search == False and flag_city == True:
+        print "jankiap50^ Hmmm.... I have your location," + str(location[0][0]) + " please enter a valid search tag."
         return
     else:
         search_location = location[0]
