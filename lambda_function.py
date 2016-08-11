@@ -162,16 +162,15 @@ def lambda_handler(event, userid, context):
     elif flag_search == False and flag_city == True:
         print "jankiap50^ Hmmm.... I have your location," + str(location[0][0]) + " please enter a valid search tag."
         return
-    else:
-        #print search_tag, location
-        search_location = location[0]
-        incoming={
-            "category": search_tag,
-            "city": search_location[0],
-            "state": search_location[1],
-            "country": search_location[2],
-        }
-        result = send_request(incoming)
+    #print search_tag, location
+    search_location = location[0]
+    incoming={
+        "category": search_tag,
+        "city": search_location[0],
+        "state": search_location[1],
+        "country": search_location[2],
+    }
+    result = send_request(incoming)
     ############################################################################
     #print "searching for " + search_tag + " at ", search_location
     print result
