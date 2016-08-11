@@ -117,8 +117,10 @@ def lambda_handler(event, userid, context):
     i=0
     while i < len(data['item']):
         all_tags = all_tags + data['item'][i]['tag_query'].replace('"','').lower().split('|')
+        all_tags = all_tags + data['item'][i]['tag_text'].replace('"','').lower().split('|')
         i=i+1
-    #printlen(all_tags)
+        #print i
+    #print len(all_tags)
     ############################################################################
     search_tag = ''
     for i in c:
@@ -147,7 +149,7 @@ def lambda_handler(event, userid, context):
         flag_search = True
 
     ############################################################################
-    foo = ["Okay", 'cool', 'sure', 'indeed', 'idk']
+    foo = ["Okay", 'cool', 'sure', 'indeed', 'idk', 'hmmmmm', 'thats kinda cool?', 'maybe', 'iDontKnow', 'aha!']
     if flag_search_this == False and flag_city_this == False:
         print "jankiap50^ " + random.choice(foo) + "! ^ ^ ^ ^ "
         return
