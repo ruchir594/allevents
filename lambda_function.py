@@ -147,9 +147,9 @@ def lambda_handler(event, userid, context):
         flag_search = True
 
     ############################################################################
+    foo = ["Okay", 'cool', 'sure', 'indeed', 'idk']
     if flag_search_this == False and flag_city_this == False:
-        foo = ["Okay", 'cool', 'sure', 'indeed', 'idk']
-        print "jankiap50^"+random.choice(foo)+" ^ ^ ^ ^ "
+        print "jankiap50^ " + random.choice(foo) + "! ^ ^ ^ ^ "
         return
     elif flag_search == True and flag_city == False:
         print "jankiap50^ Hmmm... okay. I think you are looking for " + str(search_tag) + ", please enter a valif city."
