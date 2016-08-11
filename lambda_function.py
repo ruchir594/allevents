@@ -154,7 +154,7 @@ def lambda_handler(event, userid, context):
         print "jankiap50^ " + random.choice(foo) + "! ^ ^ ^ ^ "
         return
     elif flag_search == True and flag_city == False:
-        print "jankiap50^ Hmmm... okay. I think you are looking for " + str(search_tag) + ", please enter a valif city."
+        print "jankiap50^ Hmmm... okay. I think you are looking for " + str(search_tag) + ", please enter a valid city."
         return
     elif len(location) > 1:
         print "jankiap50^there are multiple cities with that name, please select from the following ^ ^ ^ ^ "
