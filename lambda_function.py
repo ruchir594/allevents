@@ -165,15 +165,15 @@ def lambda_handler(event, userid, context):
     #print search_tag, location
     search_location = location[0]
     incoming={
-        "category": search_tag,
-        "city": search_location[0],
-        "state": search_location[1],
-        "country": search_location[2]
+        "category": str(search_tag),
+        "city": str(search_location[0]),
+        "state": str(search_location[1]),
+        "country": str(search_location[2])
     }
     result = send_request(incoming)
     ############################################################################
     #print "searching for " + search_tag + " at ", search_location
-    print result
+    print str(result)
     return
 
 lambda_handler(str(sys.argv[1]), sys.argv[2], 0)
