@@ -151,7 +151,7 @@ app.post('/webhook', (req, res) => {
                         //console.log(places)
                         if (places[0] == 'jankiap50') {
                             sendTextMessage(sender, places[1]);
-                            sendTextMessage(sender, "Hmmm something is wrong. I will report it, meanwhile, try searching something else?")
+                            //sendTextMessage(sender, "Hmmm something is wrong. I will report it, meanwhile, try searching something else?")
                             //sendTextMessage(sender, places[2]);
                             //sendTextMessage(sender, places[3])
                         }

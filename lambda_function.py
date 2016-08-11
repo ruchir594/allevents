@@ -121,7 +121,7 @@ def lambda_handler(event, userid, context):
         return
     ############################################################################
     if len(location) > 1:
-        print "jankiap50^there are multiple citied with that name, please select from the following ^ ^ ^ ^ "
+        print "jankiap50^there are multiple cities with that name, please select from the following ^ ^ ^ ^ "
         return
     else:
         search_location = location[0]
