@@ -159,10 +159,6 @@ app.post('/webhook', (req, res) => {
                         else {
                           //sendTextMessage(sender, "Python shell ran successfully")
                           //sendTextMessage(sender, places[0])
-                          //sendTextMessage(sender, places[1])
-                          //sendTextMessage(sender, places[2])
-                          //sendTextMessage(sender, places[3])
-                          //sendTextMessage(sender, places[4])
                           //sendTextMessage(sender, String(places.length))
                           var aplace = [];
                           var aplacea="";
