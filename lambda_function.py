@@ -163,6 +163,7 @@ def lambda_handler(event, userid, context):
         print "jankiap50^ Hmmm.... I have your location," + str(location[0][0]) + " please enter a valid search tag."
         return
     else:
+        #print search_tag, location
         search_location = location[0]
         incoming={
             "category": search_tag,
