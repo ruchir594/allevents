@@ -21,7 +21,7 @@ def send_request(incoming):
                     content['data'][i]['thumb_url'] + '^' + \
                     content['data'][i]['share_url'] + '^'
             i=i+1
-            if i>4:
+            if i>3:
                 break
         if i == 0:
             a = 'jankiap50^Sorry, no event of this type has been found in your area. ^ ^ ^ ^'

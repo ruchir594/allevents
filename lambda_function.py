@@ -168,7 +168,7 @@ def lambda_handler(event, userid, context):
         "category": search_tag,
         "city": search_location[0],
         "state": search_location[1],
-        "country": search_location[2],
+        "country": search_location[2]
     }
     result = send_request(incoming)
     ############################################################################
