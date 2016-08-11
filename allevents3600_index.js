@@ -411,5 +411,5 @@ app.get('/token', (req, res) => {
       cert: fs.readFileSync(cert),
       ca: fs.readFileSync(chain)
     }, app).listen(3600, function () {
-  console.log('App is ready on port 3600');
+  console.log('App is running on port 3600');
 });

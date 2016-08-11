@@ -100,7 +100,7 @@ def lambda_handler(event, userid, context):
     while i < len(data['item']):
         all_tags = all_tags + data['item'][i]['tag_query'].replace('"','').lower().split('|')
         i=i+1
-    #print len(all_tags)
+    #printlen(all_tags)
     ############################################################################
     search_tag = ''
     for i in c:
