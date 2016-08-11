@@ -8,7 +8,47 @@ from scrap import send_request
 def getWords(data):
     return re.compile(r"[\w']+").findall(data)
 
+def oldner(event, userid):
+    with open('data.json', 'r') as f:
+         data = json.load(f)
+    flag = False
+    for i in data["people"]:
+        if i["userid"] == userid:
+            flag = True
+            with open('data.json', 'w') as f:
+                 json.dump(data, f)
+            return i
+    if flag == False:
+        killbill = {
+              "count": 1,
+              "search_tag": "",
+              "userid": userid,
+              "generated": "False",
+              "flag": "",
+              "city": "",
+              "state": "",
+              "country": "",
+              }
+        data["people"].append(killbill)
+        with open('data.json', 'w') as f:
+             json.dump(data, f)
+        return killbill
+
+def updatejson(person):
+    with open('data.json', 'r') as f:
+         data = json.load(f)
+    for i in data['people']:
+        if i['userid'] == person['userid']:
+            i['city'] = person['city']
+            i['state'] = person['state']
+            i['country'] = person['country']
+            i['count'] = i['count'] + 1
+            break
+    with open('data.json', 'w') as f:
+         json.dump(data, f)
+
 def lambda_handler(event, userid, context):
+    person = oldner(event, userid)
     c = getWords(event)
     d1 = ['i', 'live', 'in', 'please', 'hi', 'give', 'find', 'who', 'what', 'my', 'hungry', 'near', 'me', 'thank', 'you', \
             'want', 'to', 'eat', 'like','liked', 'I', 'can', 'you', 'suggest', 'of', 'is', 'are', 'near', 'there', 'some', \
@@ -35,12 +75,22 @@ def lambda_handler(event, userid, context):
     b= []
     b = potentiav.cities
     #print b
-    if b != []:
-        location = city_to_state_country("\""+b[0]+"\"")
-    else:
+    if b == [] and person["city"] == "":
         print 'jankiap50^Sorry, please enter a valid city. ^ ^ ^ ^'
         return
-    #print location
+    else:
+        flag = False
+        if b == []:
+            b.append('')
+            b[0] = person['city']
+            location = [[person['city'], person['state'], person['country']]]
+        else:
+            location = city_to_state_country("\""+b[0]+"\"")
+            person['city'] = location[0][0]
+            person['state'] = location[0][1]
+            person['country'] = location[0][2]
+            updatejson(person)
+    #print locatio
     ############################################################################
     all_tags = []
     with open('tags.json', 'r') as f:
@@ -67,7 +117,7 @@ def lambda_handler(event, userid, context):
             i=i+1
     #print search_tag
     if search_tag == '':
-        print 'jankiap50^Please enter a valid event... ^ ^ ^ ^'
+        print 'jankiap50^Please enter a valid event type... ^ ^ ^ ^'
         return
     ############################################################################
     if len(location) > 1:

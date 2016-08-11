@@ -58,7 +58,7 @@ app.post('/webhook', (req, res) => {
                     d1.push('over','after','beneath','under','above','the','and','a','that','I','it','not','he','as','you');
                     d1.push('this','but','his','they','her','she','or','an','will','my','one','all','would','there','their', 'talk');
                     d1.push('talking', 'love', 'loved', 'hello', 'help', 'helping', 'helped', 'pleasure', 'bye', 'goodbye', 'care', 'later');
-                    d1.push('no','nothing', 'thanks', 'welcome', 'something', 'smart', 'dumb', 'poor', 'am', 'hey');
+                    d1.push('no','nothing', 'thanks', 'welcome', 'something', 'smart', 'dumb', 'poor', 'am', 'hey', 'bae', 'bea', 'no', 'okay', 'bye', 'ok', 'cool');
 
                     var text2 = text.replace(/\?/g,'');
                     text2 = text2.replace(/!/g,'');
@@ -83,23 +83,23 @@ app.post('/webhook', (req, res) => {
                     }
                     if(flag == false){
 
-                      if(words_text[0].toLowerCase() == 'hi' || words_text[0].toLowerCase() == 'hello'){
-                        sendTextMessage(sender, "Hello, I am Natasha.")
+                      if(words_text[0].toLowerCase() == 'hi' || words_text[0].toLowerCase() == 'hello' || words_text[0].toLowerCase() == 'hey'){
+                        sendTextMessage(sender, "Hello, I am Hey Bae.")
                       }
                       else if(words_text[0].toLowerCase() == 'who'){
-                        sendTextMessage(sender, "Hi there, My name is Natasha and I am a smart AI.")
+                        sendTextMessage(sender, "Hi there, I am a smart AI.")
                       }
                       else if(words_text[0].toLowerCase() == 'what'){
-                        sendTextMessage(sender, "I use Yelp to find food near you.")
-                        sendTextMessage(sender, "Meanwhile, please please like my page.")
+                        sendTextMessage(sender, "I help you find events near you.")
+                        //sendTextMessage(sender, "Meanwhile, please please like my page.")
                       }
                       else if(words_text[0].toLowerCase() == 'how'){
                         sendTextMessage(sender, "Let's just say I am smart...")
-                        sendTextMessage(sender, "Meanwhile, please please like my page.")
+                        //sendTextMessage(sender, "Meanwhile, please please like my page.")
                       }
                       else if(words_text[0].toLowerCase() == 'goodbye' || words_text.indexOf('bye') != -1){
                         sendTextMessage(sender, "Bye, thank you for dropping by.")
-                        sendTextMessage(sender, "Meanwhile, please please like my page.")
+                        //sendTextMessage(sender, "Meanwhile, please please like my page.")
                       }
                       else if(words_text[0].toLowerCase() == 'thank' || words_text[0].toLowerCase() == 'thanks'){
                         sendTextMessage(sender, "You are welcome.")
@@ -107,21 +107,27 @@ app.post('/webhook', (req, res) => {
                       }
                       else if(words_text[0].toLowerCase() == 'you'){
                         sendTextMessage(sender, "Well, you have strong opinions about me.")
-                        sendTextMessage(sender, "Meanwhile, please please like my page.")
+                        //sendTextMessage(sender, "Meanwhile, please please like my page.")
                       }
                       else if(words_text[0].toLowerCase() == 'i' && words_text[1].toLowerCase() == 'want'){
-                        sendTextMessage(sender, "I cannot tell what you want, please be more specific and give me your location as well.  I will soon be smarter than I am, please come back in a week.")
+                        sendTextMessage(sender, "I cannot tell what you want, please be more specific and give me your location as well.")
                       }
                       else if(words_text[0].toLowerCase() == 'i' && words_text[1].toLowerCase() == 'am'){
                         sendTextMessage(sender, "Sure, you are!")
-                        sendTextMessage(sender, "Meanwhile, please please like my page.")
+                        //sendTextMessage(sender, "Meanwhile, please please like my page.")
                       }
                       else if(words_text[0].toLowerCase() == 'i'){
                         sendTextMessage(sender, "Okay, maybe!")
                       }
+                      else if(words_text[0].toLowerCase() == 'cool'){
+                        sendTextMessage(sender, "Cool!")
+                      }
+                      else if(words_text[0].toLowerCase() == 'ok' || words_text[0].toLowerCase() == "okay"){
+                        sendTextMessage(sender, "Have a nice day!")
+                      }
                       else {
                         sendTextMessage(sender, "hmmm... I can't tell your location. Tell me your city.")
-                        sendTextMessage(sender, "Meanwhile, please please like my page.")
+                        //sendTextMessage(sender, "Meanwhile, please please like my page.")
                       }
 
                       //sendTextMessage(sender, "Nothing to Process...")
@@ -145,12 +151,12 @@ app.post('/webhook', (req, res) => {
                         //console.log(places)
                         if (places[0] == 'jankiap50') {
                             sendTextMessage(sender, places[1]);
-                            sendTextMessage(sender, "sorry, but i will soon be a lot smarter. Please come back in a week. Meanwhile, please please like the page.")
+                            sendTextMessage(sender, "Hmmm something is wrong. I will report it, meanwhile, try searching something else?")
                             //sendTextMessage(sender, places[2]);
                             //sendTextMessage(sender, places[3])
                         }
                         else {
-                          sendTextMessage(sender, "Python shell ran successfully")
+                          //sendTextMessage(sender, "Python shell ran successfully")
                           //sendTextMessage(sender, places[0])
                           //sendTextMessage(sender, places[1])
                           //sendTextMessage(sender, places[2])
