@@ -38,7 +38,7 @@ app.post('/webhook', (req, res) => {
 
         if (event.postback) {
             const text = JSON.stringify(event.postback).substring(0, 200);
-            sendTextMessage(sender, 'Postback received: ' + text);
+            //sendTextMessage(sender, 'Postback received: ' + text);
         } else if (event.message && event.message.text) { // bracket 101 open
             const text = event.message.text.trim().substring(0, 200);
 
@@ -135,7 +135,7 @@ app.post('/webhook', (req, res) => {
 
 
                     } else { //bracket 102 open
-                      sendTextMessage(sender, "processing...")
+                      //sendTextMessage(sender, "processing...")
 
                       //sendTextMessage(sender, 'Text received, so gtfo?: ' + text);
                       var options = {
