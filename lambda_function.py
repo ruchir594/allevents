@@ -241,6 +241,9 @@ def lambda_handler(event, userid, context):
     }
     result = send_request(incoming)
     print result'''
+    coord[0] = round(coord[0], 7)
+    coord[1] = round(coord[1], 7)
+    #print coord
     incoming={
         "category": str(search_tag),
         "latitude": coord[0],
@@ -250,7 +253,7 @@ def lambda_handler(event, userid, context):
     result = send_request_coord(incoming)
     ############################################################################
     #print "searching for " + search_tag + " at ", search_location
-    print str(result)
+    print result
     return
 
 lambda_handler(str(sys.argv[1]), sys.argv[2], 0)

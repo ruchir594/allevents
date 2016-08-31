@@ -61,12 +61,13 @@ def send_request_coord(incoming):
             i=i+1
             if i>3:
                 break
+        conn.close()
         if i == 0:
             a = 'jankiap50^Sorry, no event of this type has been found in your area. ^ ^ ^ ^'
+        #print a
         return a
-        conn.close()
-    except Exception as e:
-        return("[Errno {0}] {1}".format(e.errno, e.strerror))
+    except requests.exceptions.RequestException:
+        return 'HTTP Request failed'
 ####################################
 '''incoming={
     "category": "football",
