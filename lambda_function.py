@@ -50,6 +50,8 @@ def updatejson(person):
             i['city'] = person['city']
             i['state'] = person['state']
             i['country'] = person['country']
+            i['latitude'] = person['latitude']
+            i['longitude'] = person['longitude']
             i['count'] = i['count'] + 1
             break
     with open('data.json', 'w') as f:
@@ -144,9 +146,10 @@ def lambda_handler(event, userid, context):
     b= []
     b = potentiav.cities
     b = b
-    print b
-    print data_ayrton
-    if b == [] and person["city"] == "" and data_ayrton == []:
+    #print b
+    #print data_ayrton
+    #print person
+    if b == [] and person["latitude"] == -1 and data_ayrton == []:
         #print 'jankiap50^Sorry, please enter a valid city. ^ ^ ^ ^'
         #return
         flag_city = False
@@ -155,24 +158,27 @@ def lambda_handler(event, userid, context):
         if b == []:
             b.append('')
             b[0] = person['city']
-            location = [[person['city'], person['state'], person['country']]]
-            coord = get_coord(person['city'] + ',' + person['state'] + ',' + person['country'])
+            coord = [person['latitude'], person['longitude']]
         else:
             location = city_to_state_country("\""+b[0]+"\"")
-            print location
-            # calling the function to find out the state, and country,
-            # we want to use Google APIs right?
             person['city'] = location[0][0]
             person['state'] = location[0][1]
             person['country'] = location[0][2]
-            updatejson(person)
             coord = get_coord(person['city'] + ',' + person['state'] + ',' + person['country'])
+            person['latitude'] = coord[0]
+            person['longitude'] = coord[1]
+            updatejson(person)
             flag_city_this = True
         flag_city = True
     else:
         coord = get_coord(data_ayrton[0])
+        person['city'] = data_ayrton[0]
+        person['latitude'] = coord[0]
+        person['longitude'] = coord[1]
+        updatejson(person)
         flag_city = True
-    print coord
+        flag_city_this = True
+    #print coord
     #############################################################################
     # All the tags from allevents.in that must be matched are here.
     #############################################################################
@@ -224,7 +230,7 @@ def lambda_handler(event, userid, context):
     #    print "jankiap50^there are multiple cities with that name, please select from the following ^ ^ ^ ^ "
     #    return
     elif flag_search == False and flag_city == True:
-        print "jankiap50^ Hmmm.... I have your location," + str(location[0][0]) + " please enter a valid search tag."
+        print "jankiap50^ Hmmm.... I have your location, " + str(person['city']) + ", please enter a valid search tag."
         return
     #print search_tag, location
     '''incoming={

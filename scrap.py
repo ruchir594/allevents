@@ -39,12 +39,14 @@ def send_request_coord(incoming):
 
     params = urllib.urlencode({
         # Request parameters
-        'category': 'football',
+        'latitude': incoming['latitude'],
+        'longitude': incoming['longitude'],
+        'category': incoming['category'],
     })
 
     try:
         conn = httplib.HTTPSConnection('api.allevents.in')
-        conn.request("POST", "/events/geo/?latitude=23.022505&longitude=72.5713621&radius=10&%s" % params, "{body}", headers)
+        conn.request("POST", "/events/geo/?radius=10&%s" % params, "{body}", headers)
         response = conn.getresponse()
         data = response.read()
         content=json.loads(data)
