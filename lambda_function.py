@@ -254,6 +254,7 @@ def lambda_handler(event, userid, context):
     result = send_request_coord(incoming)
     ############################################################################
     #print "searching for " + search_tag + " at ", search_location
+    result.encode('ascii', 'ignore')
     print str(result)
     return
 
