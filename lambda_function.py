@@ -171,7 +171,7 @@ def lambda_handler(event, userid, context):
             updatejson(person)
             flag_city_this = True
         flag_city = True
-    else:
+    elif data_ayrton != []:
         coord = get_coord(data_ayrton[0])
         person['city'] = data_ayrton[0]
         person['latitude'] = coord[0]
@@ -179,6 +179,11 @@ def lambda_handler(event, userid, context):
         updatejson(person)
         flag_city = True
         flag_city_this = True
+    else:
+        b.append('')
+        b[0] = person['city']
+        coord = [person['latitude'], person['longitude']]
+        flag_city = True
     #print coord
     #############################################################################
     # All the tags from allevents.in that must be matched are here.
