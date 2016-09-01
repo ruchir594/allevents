@@ -87,7 +87,8 @@ def lambda_handler(event, userid, context):
             'months','years','weeks','days','hours','minutes','mins','seconds','time', 'today', 'tomorrow', 'am', 'pm',\
             'january', 'febuary', 'marth', 'april', 'may', 'june', 'july','august', 'september', 'october', 'november', 'december', \
             'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday','km', 'kilometer', 'kilometers', 'meter', 'm',\
-            'cm', 'kms', 'miles', 'yards', 'feet', 'feets','evening', 'morning', 'afternoon', 'noon', 'night']
+            'cm', 'kms', 'miles', 'yards', 'feet', 'feets','evening', 'morning', 'afternoon', 'noon', 'night',\
+            'trying', 'looking']
     #d1 = []
     kiss = ''
     bang = ''
@@ -153,7 +154,7 @@ def lambda_handler(event, userid, context):
         #print 'jankiap50^Sorry, please enter a valid city. ^ ^ ^ ^'
         #return
         flag_city = False
-    elif data_ayrton == []:
+    elif b != []:
         flag = False
         if b == []:
             b.append('')
