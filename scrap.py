@@ -53,11 +53,11 @@ def send_request_coord(incoming):
         i = 0
         a = ''
         while i < len(content['data']):
-            a = a + str(content['data'][i]['eventname']) + '^' + \
-                    str(content['data'][i]['start_time_display']) + '^' + \
-                    str(content['data'][i]['venue']['full_address']) + '^' + \
-                    str(content['data'][i]['thumb_url']) + '^' + \
-                    str(content['data'][i]['share_url']) + '^'
+            a = a + content['data'][i]['eventname'] + '^' + \
+                    content['data'][i]['start_time_display'] + '^' + \
+                    content['data'][i]['venue']['full_address'] + '^' + \
+                    content['data'][i]['thumb_url'] + '^' + \
+                    content['data'][i]['share_url'] + '^'
             i=i+1
             if i>3:
                 break
