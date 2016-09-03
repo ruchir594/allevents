@@ -194,8 +194,8 @@ def lambda_handler(event, userid, context):
 
     i=0
     while i < len(data['item']):
-        all_tags = all_tags + data['item'][i]['tag_query'].replace('"','').lower().split('|')
         all_tags = all_tags + data['item'][i]['tag_text'].replace('"','').lower().split('|')
+        all_tags = all_tags + data['item'][i]['tag_query'].replace('"','').lower().split('|')
         i=i+1
     ############################################################################
     search_tag = ''
@@ -219,11 +219,19 @@ def lambda_handler(event, userid, context):
                 flag_search_this = True
                 break
             i=i+1
+    if search_tag == '':
+        from w2v import matcher
+        latent_match = matcher(c,0)
+        if latent_match != 'jankiap50':
+            search_tag = latent_match
+            person['search_tag'] = search_tag
+            updatejson_search(person)
+            flag_search = True
+            flag_search_this = True
     #print "ST   ",search_tag, flag_search
     if search_tag == '' and person['search_tag'] != '':
         search_tag = person['search_tag']
         flag_search = True
-
     ############################################################################
     foo = ["Okay", 'cool', 'sure', 'indeed', 'idk', 'hmmmmm', 'thats kinda cool?', 'maybe', 'iDontKnow', 'aha!']
     if flag_search_this == False and flag_city_this == False:
