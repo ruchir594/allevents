@@ -162,10 +162,14 @@ def lambda_handler(event, userid, context):
             coord = [person['latitude'], person['longitude']]
         else:
             location = city_to_state_country("\""+b[0]+"\"")
-            person['city'] = location[0][0]
-            person['state'] = location[0][1]
-            person['country'] = location[0][2]
-            coord = get_coord(person['city'] + ',' + person['state'] + ',' + person['country'])
+            if location != []:
+                person['city'] = location[0][0]
+                person['state'] = location[0][1]
+                person['country'] = location[0][2]
+                coord = get_coord(person['city'] + ',' + person['state'] + ',' + person['country'])
+            else:
+                person['city'] = b[0]
+                coord = get_coord(b[0])
             person['latitude'] = coord[0]
             person['longitude'] = coord[1]
             updatejson(person)
