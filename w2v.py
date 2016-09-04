@@ -45,7 +45,6 @@ def matcher(line, context):
     with open('latent_tags.txt') as f:
         b = f.readlines()
 
-
     #print clusters['dog']
     #indexes, metrics = model.cosine(a)
     #print model.vocab[indexes]
