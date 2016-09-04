@@ -35,7 +35,6 @@ def save_latent_features_of_tagsjson():
         obj.write(i + '\n')
     obj.close
     numpy.savetxt('latent_model.txt', latent_model)
-
 #save_latent_features_of_tagsjson()
 
 def matcher(line, context):
