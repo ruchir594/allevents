@@ -16,9 +16,9 @@ def matcher(line, context):
         b = f.readlines()
 
 
-    a = model['love']
+    a = model['sports']
     print a
-    b = model['hate']
+    b = model['sporting']
     print b
     result = 1 - spatial.distance.cosine(a, b)
     print result
