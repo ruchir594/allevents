@@ -1,8 +1,8 @@
-#import word2vec
+import sys
+sys.path.insert(0, './head')
 import word2vec
 from scipy import spatial
 import numpy
-import sys
 import json
 import re
 
