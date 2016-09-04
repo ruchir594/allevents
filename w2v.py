@@ -39,8 +39,8 @@ def save_latent_features_of_tagsjson():
 #save_latent_features_of_tagsjson()
 
 def matcher(line, context):
-    model = word2vec.load('../lib/word2vec/text8.bin')
-    clusters = word2vec.load_clusters('../lib/word2vec/text8-clusters.txt')
+    model = word2vec.load('../lib/word2vec/vectors.bin')
+    #clusters = word2vec.load_clusters('../lib/word2vec/text8-clusters.txt')
     a = numpy.loadtxt('latent_model.txt')
     with open('latent_tags.txt') as f:
         b = f.readlines()
