@@ -36,7 +36,7 @@ def save_latent_features_of_tagsjson():
     obj.close
     numpy.savetxt('latent_model.txt', latent_model)
 
-save_latent_features_of_tagsjson()
+#save_latent_features_of_tagsjson()
 
 def matcher(line, context):
     model = word2vec.load('./latents.bin')
