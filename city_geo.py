@@ -26,5 +26,4 @@ def city_to_state_country(city):
                 a.append([row[3].replace('"',''), row[5].replace('"',''), row[1].replace('"','')])
             i=i+1
     return a
-
 #print city_to_state_country("\""+sys.argv[1]+"\"")
