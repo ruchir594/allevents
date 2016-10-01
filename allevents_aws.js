@@ -4,9 +4,9 @@
 // https://developers.facebook.com/docs/messenger-platform/quickstart
 
 const express = require('express');
-const request = require('superagent');
+//const request = require('superagent');
 const bodyParser = require('body-parser');
-const https = require('https');
+const http = require('http');
 
 var spawn = require("child_process").spawn;
 var PythonShell = require('python-shell');
@@ -15,9 +15,6 @@ var PythonShell = require('python-shell');
 //let pageToken = "";
 let pageToken = "EAAJffei4MlEBAAsOcdoRvIXuvZADZAIpCDqEozNZB5OcyKZBZCCn4yWU7lCLut0hGyZCHpNBjVohXbE8TwunqnwZA1nWivurifm9iMVyM74pNJvwg0WC9UriuJABn0crPMvyRm6sFzI8BfWeQ8nXWDiyJgPs4qw2fP84N7JEuE9FwZDZD";
 const verifyToken = "newton";
-const privkey = "/etc/letsencrypt/live/yelper.tonatasha.com/privkey.pem";
-const cert = "/etc/letsencrypt/live/yelper.tonatasha.com/cert.pem";
-const chain = "/etc/letsencrypt/live/yelper.tonatasha.com/chain.pem";
 
 const app = express();
 const fs = require('fs');
@@ -65,10 +62,6 @@ app.get('/token', (req, res) => {
     res.sendStatus(403);
 });
 
- https.createServer({
-      key: fs.readFileSync(privkey),
-      cert: fs.readFileSync(cert),
-      ca: fs.readFileSync(chain)
-    }, app).listen(3600, function () {
+ http.createServer(app).listen(3600, function () {
   console.log('App is running on port 3600');
 });
