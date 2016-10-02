@@ -26,6 +26,8 @@ app.get('/webhook', (req, res) => {
         return res.send(req.query['hub.challenge']);
     }
     res.send('Error, wrong validation token');
+    console.log(req.params);
+    console.log(req.query);
 });
 app.post('/webhook', (req, res) => {
     const messagingEvents = req.body.entry[0].messaging;
@@ -62,6 +64,6 @@ app.get('/token', (req, res) => {
     res.sendStatus(403);
 });
 
- http.createServer(app).listen(3600, function () {
-  console.log('App is running on port 3600');
+ http.createServer(app).listen(80, function () {
+  console.log('App is running on port 80');
 });
