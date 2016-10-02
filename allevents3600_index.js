@@ -52,7 +52,7 @@ app.post('/webhook', (req, res) => {
               if(err) { console.log(err); return; }
               console.log("Get response: " + response.statusCode);
               console.log("Get response: " + response.body);
-              console.log(response.body['userid'], response.body['response'])
+              console.log(response.body.userid, response.body.response)
             });
 
 
