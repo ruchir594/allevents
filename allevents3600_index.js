@@ -52,7 +52,8 @@ app.post('/webhook', (req, res) => {
               if(err) { console.log(err); return; }
               console.log("Get response: " + response.statusCode);
               console.log("Get response: " + response.body);
-              console.log(response.body.userid, response.body.response)
+              var returned = JSON.parse(response.body)
+              console.log(returned['userid'], returned['response'])
             });
 
 
