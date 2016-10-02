@@ -45,14 +45,16 @@ app.post('/webhook', (req, res) => {
             const text = event.message.text.trim().substring(0, 200);
             var request = require('request');
 
-            var propertiesObject = { message:'test1 is okay', userid:'test2' };
+            var propertiesObject = { message: text, userid: sender };
             var aws_url = 'http://ec2-54-191-44-236.us-west-2.compute.amazonaws.com/webhook'
-
+            console.log('sender: ',sender, 'message: ', text)
             request2({url:aws_url, qs:propertiesObject}, function(err, response, body) {
               if(err) { console.log(err); return; }
               console.log("Get response: " + response.statusCode);
               console.log("Get response: " + response.body);
+              console.log(response.body['userid'], response.body['response'])
             });
+
 
         } //bracket 101 close
     });
