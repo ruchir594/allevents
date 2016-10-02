@@ -79,56 +79,56 @@ app.get('/webhook', (req, res) => {
                 res.send({userid:sender, response:{text: "Hello, I am Hey Bae."}})
               }
               else if(words_text[0].toLowerCase() == 'who'){
-                res.send(sender, "Hi there, I am a smart AI.")
+                res.send({userid:sender, response:{text: "Hi there, I am a smart AI."}})
               }
               else if(words_text[0].toLowerCase() == 'what'){
-                res.send(sender, "I help you find events near you.")
-                //res.send(sender, "Meanwhile, please please like my page.")
+                res.send({userid:sender, response:{text: "I help you find events near you."}})
+                //res.send({userid:sender, response:{text: "Meanwhile, please please like my page.")
               }
               else if(words_text[0].toLowerCase() == 'how'){
-                res.send(sender, "Let's just say I am smart...")
-                //res.send(sender, "Meanwhile, please please like my page.")
+                res.send({userid:sender, response:{text: "Let's just say I am smart..."}})
+                //res.send({userid:sender, response:{text: "Meanwhile, please please like my page.")
               }
               else if(words_text[0].toLowerCase() == 'goodbye' || words_text.indexOf('bye') != -1){
-                res.send(sender, "Bye, thank you for dropping by.")
-                //res.send(sender, "Meanwhile, please please like my page.")
+                res.send({userid:sender, response:{text: "Bye, thank you for dropping by."}})
+                //res.send({userid:sender, response:{text: "Meanwhile, please please like my page.")
               }
               else if(words_text[0].toLowerCase() == 'thank' || words_text[0].toLowerCase() == 'thanks'){
-                res.send(sender, "You are welcome.")
-                res.send(sender, "Meanwhile, please please like my page.")
+                res.send({userid:sender, response:{text: "You are welcome."}})
+                res.send({userid:sender, response:{text: "Meanwhile, please please like my page."}})
               }
               else if(words_text[0].toLowerCase() == 'you'){
-                res.send(sender, "Well, you have strong opinions about me.")
-                //res.send(sender, "Meanwhile, please please like my page.")
+                res.send({userid:sender, response:{text: "Well, you have strong opinions about me."}})
+                //res.send({userid:sender, response:{text: "Meanwhile, please please like my page.")
               }
               else if(words_text[0].toLowerCase() == 'i' && words_text[1].toLowerCase() == 'want'){
-                res.send(sender, "I cannot tell what you want, please be more specific and give me your location as well.")
+                res.send({userid:sender, response:{text: "I cannot tell what you want, please be more specific and give me your location as well."}})
               }
               else if(words_text[0].toLowerCase() == 'i' && words_text[1].toLowerCase() == 'am'){
-                res.send(sender, "Sure, you are!")
-                //res.send(sender, "Meanwhile, please please like my page.")
+                res.send({userid:sender, response:{text: "Sure, you are!"}})
+                //res.send({userid:sender, response:{text: "Meanwhile, please please like my page.")
               }
               else if(words_text[0].toLowerCase() == 'i'){
-                res.send(sender, "Okay, maybe!")
+                res.send({userid:sender, response:{text: "Okay, maybe!"}})
               }
               else if(words_text[0].toLowerCase() == 'cool'){
-                res.send(sender, "Cool!")
+                res.send({userid:sender, response:{text: "Cool!"}})
               }
               else if(words_text[0].toLowerCase() == 'ok' || words_text[0].toLowerCase() == "okay"){
-                res.send(sender, "Have a nice day!")
+                res.send({userid:sender, response:{text: "Have a nice day!"}})
               }
               else {
-                res.send(sender, "hmmm... I can't tell your location. Tell me your city.")
-                //res.send(sender, "Meanwhile, please please like my page.")
+                res.send({userid:sender, response:{text: "hmmm... I can't tell your location. Tell me your city."}})
+                //res.send({userid:sender, response:{text: "Meanwhile, please please like my page.")
               }
 
-              //res.send(sender, "Nothing to Process...")
+              //res.send({userid:sender, response:{text: "Nothing to Process...")
 
 
             } else { //bracket 102 open
-              //res.send(sender, "processing...")
+              //res.send({userid:sender, response:{text: "processing...")
 
-              //res.send(sender, 'Text received, so gtfo?: ' + text);
+              //res.send({userid:sender, response:{text: 'Text received, so gtfo?: ' + text);
               var options = {
                 mode: 'text',
                 args: [text, sender]
@@ -143,14 +143,14 @@ app.get('/webhook', (req, res) => {
                 //console.log(places)
                 if (places[0] == 'jankiap50') {
                     res.send({userid:sender, response:places[1]});
-                    //res.send(sender, "Hmmm something is wrong. I will report it, meanwhile, try searching something else?")
-                    //res.send(sender, places[2]);
-                    //res.send(sender, places[3])
+                    //res.send({userid:sender, response:{text: "Hmmm something is wrong. I will report it, meanwhile, try searching something else?")
+                    //res.send({userid:sender, response:{text: places[2]);
+                    //res.send({userid:sender, response:{text: places[3])
                 }
                 else {
-                  //res.send(sender, "Python shell ran successfully")
-                  //res.send(sender, places[0])
-                  //res.send(sender, String(places.length))
+                  //res.send({userid:sender, response:{text: "Python shell ran successfully")
+                  //res.send({userid:sender, response:{text: places[0])
+                  //res.send({userid:sender, response:{text: String(places.length))
                   var aplace = [];
                   var aplacea="";
                   var i = 0;
@@ -159,7 +159,7 @@ app.get('/webhook', (req, res) => {
                       //aplacea = places[i]+"\n"+places[i+1]+"\n"+places[i+3]+"\n"+places[i+4];
                       aplace.push(places[i]+"^"+places[i+1]+"^"+places[i+2]+"^"+places[i+3]+"^"+places[i+4]);
                       if (typeof(places[i+1]) == typeof("hello")){
-                      //res.send(sender, aplacea);
+                      //res.send({userid:sender, response:{text: aplacea);
                       i=i+increment;
                       }
                       else {
@@ -167,11 +167,11 @@ app.get('/webhook', (req, res) => {
                       }
                   }
                   //if (places[25] != ""){
-                  //res.send(sender, places[25]);
+                  //res.send({userid:sender, response:{text: places[25]);
                   //}
-                  //res.send(sender, String(aplace.length));
+                  //res.send({userid:sender, response:{text: String(aplace.length));
                   res.send(sendGenericMessage(sender, aplace));
-                  //res.send(sender, "Like the page? Share?.")
+                  //res.send({userid:sender, response:{text: "Like the page? Share?.")
                 }
               });
       } //bracket 102 close
@@ -185,7 +185,7 @@ app.post('/webhook', (req, res) => {
 
         if (event.postback) {
             const text = JSON.stringify(event.postback).substring(0, 200);
-            //res.send(sender, 'Postback received: ' + text);
+            //res.send({userid:sender, response:{text: 'Postback received: ' + text);
         } else if (event.message && event.message.text) { // bracket 101 open
             const text = event.message.text.trim().substring(0, 200);
 
@@ -219,11 +219,11 @@ app.get('/token', (req, res) => {
 function sendGenericMessage (sender, places) {
   if (places.length == 1)
     { //length == 1
-      res.send(sender, "No event found.");
+      res.send({userid:sender, response:{text: "No event found."}});
   } // length == 1
   if (places.length == 2)
     { //length == 2
-      //res.send(sender, "I am in two places.legth match");
+      //res.send({userid:sender, response:{text: "I am in two places.legth match");
     var textual0 = places[0].split('^')
     var textual1 = places[1].split('^')
       return({userid:sender, response:{
@@ -248,11 +248,11 @@ function sendGenericMessage (sender, places) {
   } // length == 2
   if (places.length == 3)
     { //length == 3
-      //res.send(sender, "I am in three places.legth match");
+      //res.send({userid:sender, response:{text: "I am in three places.legth match");
     var textual0 = places[0].split('^')
     var textual1 = places[1].split('^')
     var textual2 = places[2].split('^')
-      return(sender, {
+      return({userid:sender, response:{
           attachment: {
             type: "template",
             payload: {
@@ -280,11 +280,11 @@ function sendGenericMessage (sender, places) {
               }]
             }
           }
-      });
+      }});
   } // length == 3
   if (places.length == 4)
     { //length == 4
-      //res.send(sender, "I am in four places.legth match");
+      //res.send({userid:sender, response:{text: "I am in four places.legth match");
     var textual0 = places[0].split('^')
     var textual1 = places[1].split('^')
     var textual2 = places[2].split('^')
@@ -331,7 +331,7 @@ function sendGenericMessage (sender, places) {
   } // length == 4
   if (places.length == 5)
     { //length == 5
-      //res.send(sender, "I am in five places.legth match");
+      //res.send({userid:sender, response:{text: "I am in five places.legth match");
     var textual0 = places[0].split('^')
     var textual1 = places[1].split('^')
     var textual2 = places[2].split('^')
