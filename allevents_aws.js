@@ -76,7 +76,7 @@ app.get('/webhook', (req, res) => {
             if(flag == false){
 
               if(words_text[0].toLowerCase() == 'hi' || words_text[0].toLowerCase() == 'hello' || words_text[0].toLowerCase() == 'hey'){
-                res.send({userid:sender, response:"Hello, I am Hey Bae."})
+                res.send({userid:sender, response:{text: "Hello, I am Hey Bae."}})
               }
               else if(words_text[0].toLowerCase() == 'who'){
                 res.send(sender, "Hi there, I am a smart AI.")
