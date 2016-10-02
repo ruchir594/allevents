@@ -53,7 +53,8 @@ app.post('/webhook', (req, res) => {
               console.log("Get response: " + response.statusCode);
               console.log("Get response: " + response.body);
               var returned = JSON.parse(response.body)
-              console.log(returned['userid'], returned['response'])
+              //console.log(returned['userid'], returned['response'])
+              sendMessage(sender, returned['response'])
             });
 
 
