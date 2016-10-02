@@ -5,8 +5,10 @@
 
 const express = require('express');
 const request = require('superagent');
+var request2 = require('request');
 const bodyParser = require('body-parser');
 const https = require('https');
+var http = require("http");
 
 var spawn = require("child_process").spawn;
 var PythonShell = require('python-shell');
@@ -46,7 +48,7 @@ app.post('/webhook', (req, res) => {
             var propertiesObject = { message:'test1 is okay', userid:'test2' };
             var aws_url = 'http://ec2-54-191-44-236.us-west-2.compute.amazonaws.com/webhook'
 
-            request({url:aws_url, qs:propertiesObject}, function(err, response, body) {
+            request2({url:aws_url, qs:propertiesObject}, function(err, response, body) {
               if(err) { console.log(err); return; }
               console.log("Get response: " + response.statusCode);
               console.log("Get response: " + response.body);
