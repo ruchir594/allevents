@@ -26,8 +26,9 @@ app.get('/webhook', (req, res) => {
         return res.send(req.query['hub.challenge']);
     }
     res.send('Error, wrong validation token');
-    console.log(req.params);
     console.log(req.query);
+    console.log(req.query.message);
+    console.log(req.query.userid);
 });
 app.post('/webhook', (req, res) => {
     const messagingEvents = req.body.entry[0].messaging;
