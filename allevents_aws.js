@@ -226,7 +226,7 @@ function sendGenericMessage (sender, places) {
       //res.send(sender, "I am in two places.legth match");
     var textual0 = places[0].split('^')
     var textual1 = places[1].split('^')
-      return(userid:sender, response:{
+      return({userid:sender, response:{
           attachment: {
             type: "template",
             payload: {
@@ -244,7 +244,7 @@ function sendGenericMessage (sender, places) {
               }]
             }
           }
-      });
+      }});
   } // length == 2
   if (places.length == 3)
     { //length == 3
@@ -289,7 +289,7 @@ function sendGenericMessage (sender, places) {
     var textual1 = places[1].split('^')
     var textual2 = places[2].split('^')
     var textual3 = places[3].split('^')
-      return(sender, {
+      return({userid:sender, response:{
           attachment: {
             type: "template",
             payload: {
@@ -327,7 +327,7 @@ function sendGenericMessage (sender, places) {
               }]
             }
           }
-      });
+      }});
   } // length == 4
   if (places.length == 5)
     { //length == 5
@@ -337,7 +337,7 @@ function sendGenericMessage (sender, places) {
     var textual2 = places[2].split('^')
     var textual3 = places[3].split('^')
     var textual4 = places[4].split('^')
-      return(sender, {
+      return({userid:sender, response:{
           attachment: {
             type: "template",
             payload: {
@@ -385,6 +385,6 @@ function sendGenericMessage (sender, places) {
               }]
             }
           }
-      });
+      }});
   } // length == 5
 }
