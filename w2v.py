@@ -19,6 +19,12 @@ def save_latent_features_of_tagsjson():
         all_tags = all_tags + data['item'][i]['tag_text'].replace('"','').lower().split('|')
         all_tags = all_tags + data['item'][i]['tag_query'].replace('"','').lower().split('|')
         i=i+1
+    i=0
+    while i < len(all_tags):
+        if all_tags[i][0] == ' ':
+            all_tags[i] = all_tags[i][1:]
+            i=i-1
+        i=i+1
     print all_tags
     latent_tags=[]
     latent_model=[]
@@ -35,7 +41,7 @@ def save_latent_features_of_tagsjson():
         obj.write(i + '\n')
     obj.close
     numpy.savetxt('latent_model.txt', latent_model)
-save_latent_features_of_tagsjson()
+#save_latent_features_of_tagsjson()
 
 def matcher(line, context):
     model = word2vec.load('./latents.bin')

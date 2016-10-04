@@ -202,6 +202,13 @@ def lambda_handler(event, userid, context):
         all_tags = all_tags + data['item'][i]['tag_query'].replace('"','').lower().split('|')
         i=i+1
     ############################################################################
+    i=0
+    while i < len(all_tags):
+        if all_tags[i][0] == ' ':
+            all_tags[i] = all_tags[i][1:]
+            i=i-1
+        i=i+1
+    #print all_tags
     search_tag = ''
     for i in c:
         if i.lower() in all_tags:
