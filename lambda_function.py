@@ -1,7 +1,7 @@
 import json
 import re
 import sys
-import random
+import random, time, csv
 sys.path.insert(0, './head')
 from geotext import GeoText
 from city_geo import city_to_state_country
@@ -14,7 +14,7 @@ def getWords(data):
     return re.compile(r"[\w']+").findall(data)
 def getWords_special_location(data):
     return re.compile(r"[\w'/.,-@]+").findall(data)
-def oldner(event, userid):
+def oldner(userid):
     with open('data.json', 'r') as f:
          data = json.load(f)
     flag = False
@@ -35,7 +35,8 @@ def oldner(event, userid):
               "state": "",
               "country": "",
               "latitude": -1,
-              "longitude": -1
+              "longitude": -1,
+              "timestamp": int(round(time.time() * 1000))
               }
         data["people"].append(killbill)
         with open('data.json', 'w') as f:
@@ -53,9 +54,28 @@ def updatejson(person):
             i['latitude'] = person['latitude']
             i['longitude'] = person['longitude']
             i['count'] = i['count'] + 1
+            i['timestamp'] = int(round(time.time() * 1000))
             break
     with open('data.json', 'w') as f:
          json.dump(data, f)
+
+def clearjson(person):
+    with open('data.json', 'r') as f:
+         data = json.load(f)
+    for i in data['people']:
+        if i['userid'] == person['userid']:
+            i['city'] = ''
+            i['state'] = ''
+            i['country'] = ''
+            i['latitude'] = -1
+            i['longitude'] = -1
+            i['count'] = i['count']
+            i['search_tag'] = ''
+            i['timestamp'] = int(round(time.time() * 1000))
+            break
+    with open('data.json', 'w') as f:
+         json.dump(data, f)
+
 def updatejson_search(person):
     with open('data.json', 'r') as f:
          data = json.load(f)
@@ -63,11 +83,54 @@ def updatejson_search(person):
         if i['userid'] == person['userid']:
             i['search_tag'] = person['search_tag']
             i['count'] = i['count'] + 1
+            i['timestamp'] = int(round(time.time() * 1000))
             break
     with open('data.json', 'w') as f:
          json.dump(data, f)
 
+def agefy(person):
+    userid = person['userid']
+    current_time = int(round(time.time() * 1000))
+    if current_time - person['timestamp'] > 36000000:
+        clearjson(person)
+    return oldner(userid)
+
+def push_in_csv(event, userid):
+    timestamp = int(round(time.time() * 1000))
+    date = time.strftime("%m/%d/%Y")
+    with open('allevents_user_data.csv', 'a') as csvfile:
+        fieldnames = ['userid', 'event', 'timestamp', 'date']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        #writer.writeheader()
+        writer.writerow({'userid': userid, 'event': event, 'timestamp': timestamp, 'date': date})
+
+def push_out_csv(event, userid):
+    timestamp = int(round(time.time() * 1000))
+    date = time.strftime("%m/%d/%Y")
+    with open('allevents_user_data_response.csv', 'a') as csvfile:
+        fieldnames = ['userid', 'event', 'timestamp', 'date']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        #writer.writeheader()
+        writer.writerow({'userid': userid, 'event': event, 'timestamp': timestamp, 'date': date})
+
 def lambda_handler(event, userid, context):
+
+    push_in_csv(event, userid)
+
+    if event.lower() == 'wash_element':
+        person = oldner(userid)
+        clearjson(person)
+        blowed = "jankiap50^ We cleared your element. Forgot you state and history. "
+        push_out_csv(blowed, userid)
+        print blowed
+        return
+    if event.lower() == 'display_element':
+        person = oldner(userid)
+        blowed = "jankiap50^ Here is your element: " + json.dumps(person)
+        push_out_csv(blowed, userid)
+        print blowed
+        return
+
     lust = getWords_special_location(event)
     #################################################################################
     d1 = ['i', 'live', 'in', 'please', 'hi', 'give', 'find', 'who', 'what', 'my', 'hungry', 'near', 'me', 'thank', 'you', \
@@ -141,7 +204,8 @@ def lambda_handler(event, userid, context):
     flag_search = False
     flag_city_this = False
     flag_search_this = False
-    person = oldner(event, userid)
+    person = oldner(userid)
+    person = agefy(person)
     c = getWords(event)
     potentiav = GeoText(kiss)
     b= []
@@ -246,16 +310,22 @@ def lambda_handler(event, userid, context):
     ############################################################################
     foo = ["Okay", 'cool', 'sure', 'indeed', 'idk', 'hmmmmm', 'thats kinda cool?', 'maybe', 'iDontKnow', 'aha!']
     if flag_search_this == False and flag_city_this == False:
-        print "jankiap50^ " + random.choice(foo) + "! ^ ^ ^ ^ "
+        blowed = "jankiap50^ " + random.choice(foo) + "! ^ ^ ^ ^ "
+        push_out_csv(blowed, userid)
+        print blowed
         return
     elif flag_search == True and flag_city == False:
-        print "jankiap50^ Hmmm... okay. I think you are looking for " + str(search_tag) + ", please enter a valid city."
+        blowed = "jankiap50^ Hmmm... okay. I think you are looking for " + str(search_tag) + ", please enter a valid city."
+        push_out_csv(blowed, userid)
+        print blowed
         return
     #elif len(location) > 1:
     #    print "jankiap50^there are multiple cities with that name, please select from the following ^ ^ ^ ^ "
     #    return
     elif flag_search == False and flag_city == True:
-        print "jankiap50^ Hmmm.... I have your location, " + str(person['city']) + ", please enter a valid search tag."
+        blowed = "jankiap50^ Hmmm.... I have your location, " + str(person['city']) + ", please enter a valid search tag."
+        push_out_csv(blowed, userid)
+        print blowed
         return
     #print search_tag, location
     '''incoming={
@@ -279,6 +349,7 @@ def lambda_handler(event, userid, context):
     ############################################################################
     #print "searching for " + search_tag + " at ", search_location
     result=result.encode('ascii', 'ignore')
+    push_out_csv(str(result), userid)
     print str(result)
     return
 
