@@ -137,10 +137,10 @@ app.get('/webhook', (req, res) => {
                 if (err) throw err;
                 //console.log('result: %j', results);
                 console.log('back in app.js')
-                console.log(results)
                 var results = String(results)
+                console.log(results)
                 var places = results.split("^");
-                //console.log(places)
+                console.log(places)
                 if (places[0] == 'jankiap50') {
                     res.send({userid:sender, response:{text:places[1]}});
                     //res.send({userid:sender, response:{text: "Hmmm something is wrong. I will report it, meanwhile, try searching something else?")

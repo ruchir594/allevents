@@ -356,6 +356,7 @@ def lambda_handler(event, userid, context):
     result=result.encode('ascii', 'ignore')
     result = sorting.sort_generation(result, res_nle)
     result=result.encode('ascii', 'ignore')
+    #print type(result)
     push_out_csv(str(result), userid)
     print str(result)
     return
