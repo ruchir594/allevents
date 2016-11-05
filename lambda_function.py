@@ -355,6 +355,7 @@ def lambda_handler(event, userid, context):
     #print "searching for " + search_tag + " at ", search_location
     result=result.encode('ascii', 'ignore')
     result = sorting.sort_generation(result, res_nle)
+    result=result.encode('ascii', 'ignore')
     push_out_csv(str(result), userid)
     print str(result)
     return
