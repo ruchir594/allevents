@@ -9,6 +9,8 @@ from scrap import send_request
 from scrap import send_request_coord
 from crf_location import crf_exec
 from google_geocord import get_coord
+from nle import local_tagger
+from nlg import sorting
 
 def getWords(data):
     return re.compile(r"[\w']+").findall(data)
@@ -308,6 +310,9 @@ def lambda_handler(event, userid, context):
         search_tag = person['search_tag']
         flag_search = True
     ############################################################################
+    #print 'a', a
+    res_nle = local_tagger.ner(event, a)
+    ############################################################################
     foo = ["Okay", 'cool', 'sure', 'indeed', 'idk', 'hmmmmm', 'thats kinda cool?', 'maybe', 'iDontKnow', 'aha!']
     if flag_search_this == False and flag_city_this == False:
         blowed = "jankiap50^ " + random.choice(foo) + "! ^ ^ ^ ^ "
@@ -349,6 +354,7 @@ def lambda_handler(event, userid, context):
     ############################################################################
     #print "searching for " + search_tag + " at ", search_location
     result=result.encode('ascii', 'ignore')
+    result = sorting.sort_generation(result, res_nle)
     push_out_csv(str(result), userid)
     print str(result)
     return

@@ -59,7 +59,7 @@ def send_request_coord(incoming):
                     content['data'][i]['thumb_url'] + '^' + \
                     content['data'][i]['share_url'] + '^'
             i=i+1
-            if i>3:
+            if i>100:
                 break
         conn.close()
         if i == 0:

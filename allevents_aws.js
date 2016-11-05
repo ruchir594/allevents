@@ -82,7 +82,7 @@ app.get('/webhook', (req, res) => {
                 res.send({userid:sender, response:{text: "Hi there, I am a smart AI."}})
               }
               else if(words_text[0].toLowerCase() == 'what'){
-                res.send({userid:sender, response:{text: "I help you find events near you."}})
+                res.send({userid:sender, response:{text: "I help you find events near you using allevents.in, just tell me your city/area by typing below and pick an event from broad category allevents.in has to offer."}})
                 //res.send({userid:sender, response:{text: "Meanwhile, please please like my page.")
               }
               else if(words_text[0].toLowerCase() == 'how'){
@@ -105,11 +105,11 @@ app.get('/webhook', (req, res) => {
                 res.send({userid:sender, response:{text: "I cannot tell what you want, please be more specific and give me your location as well."}})
               }
               else if(words_text[0].toLowerCase() == 'i' && words_text[1].toLowerCase() == 'am'){
-                res.send({userid:sender, response:{text: "Sure, you are!"}})
+                res.send({userid:sender, response:{text: "Sure, you are! But I can suggest events near you using allevents.in if you tell me your city/are and what type of event you are looking for."}})
                 //res.send({userid:sender, response:{text: "Meanwhile, please please like my page.")
               }
               else if(words_text[0].toLowerCase() == 'i'){
-                res.send({userid:sender, response:{text: "Okay, maybe!"}})
+                res.send({userid:sender, response:{text: "Okay, maybe! But I can suggest events near you using allevents.in if you tell me your city/are and what type of event you are looking for."}})
               }
               else if(words_text[0].toLowerCase() == 'cool'){
                 res.send({userid:sender, response:{text: "Cool!"}})
