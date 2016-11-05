@@ -50,10 +50,14 @@ def get_per_day(a, e):
             a = str(a)
     if len(a.split(' ')) == 2:
         ad = a.split(' ')
-        m = ad[0].title()
+        if ad[0].isdigit():
+            a = ad[0]
+            m = ad[1].title()
+        else:
+            a = ad[1]
+            m = ad[0].title()
         if len(m) > 3:
             m = m[:3]
-        a = ad[1]
         if a < 10:
             a = '0'+str(a)
         else:
