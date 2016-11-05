@@ -48,6 +48,14 @@ def get_per_day(a, e):
             a = '0'+str(a)
         else:
             a = str(a)
+    if len(a.split(' ')) == 2:
+        ad = a.split(' ')
+        m = ad[0].title()
+        a = ad[1]
+        if a < 10:
+            a = '0'+str(a)
+        else:
+            a = str(a)
     tq = m + ' ' + a
     #print tq
     z = []

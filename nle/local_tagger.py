@@ -179,7 +179,8 @@ class stamps:
                         'august', 'september', 'october', 'november', 'december', \
                         'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
         day_text = ['january', 'febuary', 'marth', 'april', 'may', 'june', 'july', \
-                    'august', 'september', 'october', 'november', 'december']
+                    'august', 'september', 'october', 'november', 'december',\
+                    'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
         time_text = ['am', 'pm', 'noon']
         distance_text = ['km', 'kilometer', 'kilometers', 'meter', 'm', 'cm', 'kms', 'miles', 'yards', 'feet', 'feets']
         amount_of_money = ['usd', 'dollar', 'dollars', 'euro', 'pound', 'pounds', 'euros', 'rupee', 'rupees', 'rs']
