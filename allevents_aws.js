@@ -387,4 +387,73 @@ function sendGenericMessage (sender, places) {
           }
       }});
   } // length == 5
+  if (places.length == 6)
+    { //length == 6
+      //res.send({userid:sender, response:{text: "I am in five places.legth match");
+    var textual0 = places[0].split('^')
+    var textual1 = places[1].split('^')
+    var textual2 = places[2].split('^')
+    var textual3 = places[3].split('^')
+    var textual4 = places[4].split('^')
+    var textual5 = places[5].split('^')
+      return({userid:sender, response:{
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              elements: [{
+                title: textual0[0],
+                subtitle: textual0[1] + textual0[2], //+ textual0[2],
+                item_url: textual0[4],
+                image_url: textual0[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual0[4],
+                  title: "See details"
+                }],
+              }, {
+                title: textual1[0],
+                subtitle: textual1[1] + textual1[2],
+                item_url: textual1[4],
+                image_url: textual1[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual1[4],
+                  title: "See details"
+                }],
+              },{
+                title: textual2[0],
+                subtitle: textual2[1] + textual2[2],
+                item_url: textual2[4],
+                image_url: textual2[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual2[4],
+                  title: "See details"
+                }],
+              },{
+                title: textual3[0],
+                subtitle: textual3[1] + textual3[2],
+                item_url: textual3[4],
+                image_url: textual3[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual3[4],
+                  title: "See details"
+                }],
+              },{
+                title: textual4[0],
+                subtitle: textual4[1] + textual4[2],
+                item_url: textual4[4],
+                image_url: textual4[3],
+                buttons: [{
+                  type: "web_url",
+                  url: textual4[4],
+                  title: "See details"
+                }],
+              }]
+            }
+          }
+      }});
+  } // length == 6
 }
