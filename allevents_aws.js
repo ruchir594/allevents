@@ -219,7 +219,8 @@ app.get('/token', (req, res) => {
 function sendGenericMessage (sender, places) {
   if (places.length == 1)
     { //length == 1
-      res.send({userid:sender, response:{text: "No event found."}});
+      return({userid:sender, response:{text: "No event found."}});
+      
   } // length == 1
   if (places.length == 2)
     { //length == 2
