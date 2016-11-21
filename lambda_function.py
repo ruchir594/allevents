@@ -330,7 +330,7 @@ def lambda_handler(event, userid, context):
         blowed = "jankiap50^ " + random.choice(foo) + "! ^ ^ ^ ^ "
         for each in query_event:
             if each in c:
-                blowed = get_random_event_list(all_tags)
+                blowed = "jankiap50^ " + get_random_event_list(all_tags)
         push_out_csv(blowed, userid)
         print blowed
         return
@@ -343,7 +343,7 @@ def lambda_handler(event, userid, context):
     #    print "jankiap50^there are multiple cities with that name, please select from the following ^ ^ ^ ^ "
     #    return
     elif flag_search == False and flag_city == True:
-        blowed = "jankiap50^ Hmmm.... I have your location, " + str(person['city']) + ", please enter a valid search tag."
+        blowed = "jankiap50^ Hmmm.... I have your location, " + str(person['city']) + ", please enter an event type like... \n " + get_random_event_list(all_tags)
         push_out_csv(blowed, userid)
         print blowed
         return
