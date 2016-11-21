@@ -16,6 +16,17 @@ def getWords(data):
     return re.compile(r"[\w']+").findall(data)
 def getWords_special_location(data):
     return re.compile(r"[\w'/.,-@]+").findall(data)
+def get_random_event_list(all_tags):
+    blob = ''
+    i = 0
+    while i < 10:
+        ev = random.choice(all_tags)
+        if blob.find(ev) == -1:
+            blob = blob + ev + '\n'
+            i = i + 1
+        else:
+            i = i
+    return blob[:-1]
 def oldner(userid):
     with open('data.json', 'r') as f:
          data = json.load(f)
@@ -314,8 +325,12 @@ def lambda_handler(event, userid, context):
     res_nle = local_tagger.ner(event, a)
     ############################################################################
     foo = ["Okay", 'cool', 'sure', 'indeed', 'idk', 'hmmmmm', 'thats kinda cool?', 'maybe', 'iDontKnow', 'aha!']
+    query_event = ['event', 'events', 'show', 'shows', 'what', 'type']
     if flag_search_this == False and flag_city_this == False:
         blowed = "jankiap50^ " + random.choice(foo) + "! ^ ^ ^ ^ "
+        for each in query_event:
+            if each in c:
+                blowed = get_random_event_list(all_tags)
         push_out_csv(blowed, userid)
         print blowed
         return
