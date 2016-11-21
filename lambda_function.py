@@ -22,7 +22,7 @@ def get_random_event_list(all_tags):
     while i < 10:
         ev = random.choice(all_tags)
         if blob.find(ev) == -1:
-            blob = blob + ev + '\n'
+            blob = blob + ev + ' \n '
             i = i + 1
         else:
             i = i
